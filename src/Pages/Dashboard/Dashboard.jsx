@@ -1,6 +1,11 @@
+import DashboardIntro from './DashboardIntro';
+import SellsInfo from './SellsInfo';
 
 export default function Dashboard() {
-  return (
-    <div>Dashboard</div>
-  )
+   return (
+      <div>
+         <SellsInfo />
+         <DashboardIntro />
+      </div>
+   );
 }
