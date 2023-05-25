@@ -21,7 +21,7 @@ export default function SignIn() {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                <div className='hidden lg:flex flex-col items-center justify-center'>
                   <h4 className='text-2xl lg:text-4xl text-center'>
-                     Welcome to <br /> M&M Admin Panel
+                     Welcome to <br /> EBS Admin Panel
                   </h4>
                   <img src={SignGrapich} alt='' />
                </div>

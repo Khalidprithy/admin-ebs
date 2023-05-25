@@ -11,10 +11,11 @@ function App() {
       <>
          <div className='flex'>
             {!isLoginPage ? <Sidebar /> : null}
-
-            <div className='fixed top-16 left-16 md:left-40 right-0 transition-all ease-in-out duration-500 p-2 bg-blue-50'>
+            <div className='flex flex-col flex-1 ml-16 md:ml-40 transition-all ease-in-out duration-500 bg-blue-50'>
                {!isLoginPage ? <TopBar /> : null}
-               <Router />
+               <div className='flex-1 bg-gray-100'>
+                  <Router />
+               </div>
             </div>
          </div>
       </>

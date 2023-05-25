@@ -2,7 +2,7 @@ import introImg from '../assets/introGrapichs.png';
 
 export default function HeroCard() {
    return (
-      <div className='flex bg-gray-50 rounded shadow p-5 mt-4'>
+      <div className='w-full lg:w-7/12 grid grid-cols-1 sm:grid-cols-2  bg-gray-50 rounded shadow p-5 mt-4'>
          <div>
             <h4 className='text-3xl font-semibold my-2'>Kbin Alam</h4>
             <p className='font-medium text-gray-600'>

@@ -33,7 +33,7 @@ const Sidebar = () => {
    ];
 
    return (
-      <div className='menu p-2 w-16 md:w-40 h-screen bg-gray-800 pt-5 text-base-content transition-all ease-in-out duration-500 '>
+      <div className='menu p-2 fixed top-0 left-0 w-16 md:w-40 h-screen bg-gray-800 pt-5 text-base-content transition-all ease-in-out duration-500 '>
          <Link
             to='/dashboard'
             className='flex items-center justify-center gap-4 mb-10'
