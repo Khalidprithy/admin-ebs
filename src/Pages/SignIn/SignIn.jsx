@@ -1,10 +1,22 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import SignGrapich from '../../assets/signInGrapich.png';
+import { login } from '../../redux/slice/authentication';
+import Loading from '../Shared/Loading';
 
 export default function SignIn() {
+   const navigate = useNavigate();
+
    const [passwordShow, setPasswordShow] = useState(false);
+
+   const dispatch = useDispatch();
+   const { isLoading, isAuthenticated, error, user } = useSelector(
+      state => state.authentication
+   );
+
    const {
       register,
       formState: { errors },
@@ -13,7 +25,16 @@ export default function SignIn() {
       mode: 'onTouched'
    });
 
-   const SignUp = () => {};
+   const SignUp = async data => {
+      const { username, password } = data;
+      dispatch(login({ username, password }));
+      navigate('/dashboard');
+   };
+   console.log(isAuthenticated, user);
+
+   if (isLoading) {
+      return <Loading />;
+   }
 
    return (
       <div className='fixed inset-0 bg-gray-100'>
@@ -43,39 +64,30 @@ export default function SignIn() {
                   <form onSubmit={handleSubmit(SignUp)}>
                      <div className='form-control w-full relative'>
                         <label
-                           htmlFor='email'
+                           htmlFor='username'
                            className='text-base text-gray-100 p-2'
                         >
-                           Email address
+                           User Name
                         </label>
                         <input
                            type='text'
-                           placeholder='name@example.com'
-                           name='email'
+                           placeholder='Enter your Username'
+                           name='username'
                            className={`input input-bordered w-full text-[18px] ${
                               errors.phone &&
                               'focus:border-orange-400 focus:ring-orange-400 border-2 border-orange-400'
                            }`}
-                           {...register('email', {
+                           {...register('username', {
                               required: {
                                  value: true,
-                                 message: 'Please Enter Your Email'
-                              },
-                              pattern: {
-                                 value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                 message: 'Enter a valid Email'
+                                 message: 'Please Enter Your Username'
                               }
                            })}
                         />
                         <label className='label'>
-                           {errors.email?.type === 'required' && (
+                           {errors.username?.type === 'required' && (
                               <span className='label-text text-base text-orange-400'>
-                                 {errors.email.message}
-                              </span>
-                           )}
-                           {errors.email?.type === 'pattern' && (
-                              <span className='label-text text-base text-orange-400'>
-                                 {errors.email.message}
+                                 {errors.username.message}
                               </span>
                            )}
                         </label>
@@ -128,6 +140,7 @@ export default function SignIn() {
                         value='Sign In'
                      />
                   </form>
+                  {error}
                </div>
             </div>
          </div>
