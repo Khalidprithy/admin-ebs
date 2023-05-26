@@ -1,19 +1,30 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
-export const login = createAsyncThunk('authentication/login', async ({ username, password }) => {
-
-    const response = await fetch('https://dummyjson.com/auth/login', {
-        method: 'POST',
-        body: JSON.stringify({ username, password }),
-        headers: {
-            'Content-Type': 'application/json'
+export const loadUserFromStorage = () => {
+    return (dispatch) => {
+        const user = localStorage.getItem("user");
+        if (user) {
+            dispatch(authenticationSlice.actions.setUser(JSON.parse(user)));
         }
-    });
-    const data = await response.json();
-    Cookies.set("token", data.token);
-    return data;
-});
+    };
+};
+
+export const login = createAsyncThunk(
+    'authentication/login',
+    async ({ username, password }) => {
+        const response = await fetch('https://dummyjson.com/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ username, password }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        Cookies.set("token", data.token);
+        return data;
+    }
+);
 
 const authenticationSlice = createSlice({
     name: "authentication",
@@ -23,7 +34,16 @@ const authenticationSlice = createSlice({
         user: null,
         error: null
     },
-    reducers: {},
+    reducers: {
+        setUser: (state, action) => {
+            state.user = action.payload;
+            state.isAuthenticated = true;
+        },
+        clearUser: (state) => {
+            state.user = null;
+            state.isAuthenticated = false;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(login.pending, (state) => {
@@ -36,6 +56,8 @@ const authenticationSlice = createSlice({
                 state.isAuthenticated = true;
                 state.user = action.payload;
                 state.error = null;
+                // Store user in local storage
+                localStorage.setItem("user", JSON.stringify(action.payload));
             })
             .addCase(login.rejected, (state, action) => {
                 state.isLoading = false;
@@ -45,4 +67,5 @@ const authenticationSlice = createSlice({
     }
 });
 
+export const { setUser, clearUser } = authenticationSlice.actions;
 export default authenticationSlice.reducer;

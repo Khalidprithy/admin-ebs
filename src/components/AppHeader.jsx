@@ -1,10 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { loadUserFromStorage } from '../redux/slice/authentication';
 
 const AppHeader = () => {
-   const { isAuthenticated, user } = useSelector(state => state.authentication);
+   const user = useSelector(state => state.authentication.user);
+   const dispatch = useDispatch();
 
-   console.log('App Header', isAuthenticated, user);
+   useEffect(() => {
+      dispatch(loadUserFromStorage());
+   }, [dispatch]);
 
    return (
       <div className='fixed top-0 left-16 z-50 md:left-40 right-0 h-16 transition-all ease-in-out duration-500 p-1 backdrop-blur-md'>

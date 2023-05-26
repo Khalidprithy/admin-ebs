@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 export default function CustomerCard({ customer }) {
    const {
+      id,
       firstName,
       lastName,
       age,
@@ -12,6 +14,12 @@ export default function CustomerCard({ customer }) {
       company,
       address
    } = customer || {};
+
+   const navigate = useNavigate();
+
+   const handleViewCart = () => {
+      navigate(`/customer/${id}`);
+   };
 
    return (
       <div className='bg-white flex p-4 rounded shadow'>
@@ -52,7 +60,10 @@ export default function CustomerCard({ customer }) {
                <button className='absolute bottom-0 btn btn-outline btn-sm rounded-sm'>
                   Details
                </button>
-               <button className='absolute bottom-0 right-0 btn btn-outline btn-sm rounded-sm'>
+               <button
+                  onClick={handleViewCart}
+                  className='absolute bottom-0 right-0 btn btn-outline btn-sm rounded-sm'
+               >
                   Cart
                </button>
             </div>
