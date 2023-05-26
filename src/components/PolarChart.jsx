@@ -6,7 +6,7 @@ export default function PolarChart() {
    const isMobile = useMediaQuery({ maxWidth: 767 });
 
    const [polarChart] = useState({
-      series: [32, 36, 45, 38, 60],
+      series: [33, 17, 23, 15, 12],
       options: {
          chart: {
             width: 370,
@@ -19,7 +19,7 @@ export default function PolarChart() {
          },
          stroke: {
             width: 1,
-            colors: ['#28B463', '#D68910', '#5DADE2', '#48C9B0', '#EC7063']
+            colors: ['#9C9C9C']
          },
          yaxis: {
             show: false
@@ -33,7 +33,7 @@ export default function PolarChart() {
                   strokeWidth: 0
                },
                spokes: {
-                  strokeWidth: 0
+                  strokeWidth: 1
                }
             }
          },
@@ -41,7 +41,7 @@ export default function PolarChart() {
             monochrome: {
                enabled: true,
                shadeTo: 'light',
-               shadeIntensity: 0.6
+               shadeIntensity: 0.7
             }
          }
       }

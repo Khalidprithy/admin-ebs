@@ -40,8 +40,8 @@ const Sidebar = () => {
          >
             {' '}
             <FcShop className='text-4xl' />
-            <span className='hidden md:block text-gray-200 font-bold'>
-               Shop
+            <span className='hidden md:block text-gray-200 font-bold text-lg transition-all ease-out duration-300'>
+               EBS
             </span>
          </Link>
          <ul>
