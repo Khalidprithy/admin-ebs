@@ -4,7 +4,7 @@ import SellsInfo from './SellsInfo';
 
 export default function Dashboard() {
    return (
-      <div>
+      <div className='mt-6'>
          <SellsInfo />
          <DashboardIntro />
          <DashboardCharts />

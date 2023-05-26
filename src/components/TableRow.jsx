@@ -1,38 +1,41 @@
-export default function TableRow(product) {
-   console.log(product.product);
+import PropTypes from 'prop-types';
+
+export default function TableRow({ product }) {
+   const { title, price, brand, category, thumbnail } = product || {};
 
    return (
-      <tr>
-         <td>
-            <div className='flex items-center space-x-3'>
-               <div className='avatar'>
-                  <div className='mask mask-square rounded w-12 h-12'>
-                     <img
-                        src={product.product?.thumbnail}
-                        alt='Avatar Tailwind CSS Component'
-                     />
-                  </div>
-               </div>
-               <div>
-                  <div className='font-bold'>{product.product?.title}</div>
-                  <div className='text-sm opacity-50'>
-                     {product.product?.brand}
-                  </div>
-               </div>
-            </div>
-         </td>
-         <td>
-            {product.product?.category}
-            <br />
-            <span className='badge badge-ghost badge-sm'>
-               {product.product?.rating}
-            </span>
-         </td>
-         <td> ${product.product?.price}</td>
-         <th>
-            <button className='btn btn-ghost btn-xs'>Details</button>
-            <button className='btn btn-ghost btn-xs'>Delete</button>
+      <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+         <th
+            scope='row'
+            className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+         >
+            <img className='w-20 max-h-14 rounded-md' src={thumbnail} alt='' />
          </th>
+         <td className='px-6 py-4'>
+            <h4>{title}</h4>
+            <p className='text-sm text-gray-600'>{brand}</p>
+         </td>
+         <td className='px-6 py-4'>{category}</td>
+         <td className='px-6 py-4'>${price}</td>
+         <td className='px-6 py-4 text-right'>
+            <a
+               href='#'
+               className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
+            >
+               Edit
+            </a>
+         </td>
       </tr>
    );
 }
+
+TableRow.propTypes = {
+   product: PropTypes.shape({
+      title: PropTypes.string,
+      price: PropTypes.number,
+      brand: PropTypes.string,
+      category: PropTypes.string,
+      thumbnail: PropTypes.string,
+      company: PropTypes.object
+   })
+};

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-const TopBar = () => {
+const AppHeader = () => {
    let tempUser = null;
 
    return (
-      <div className='sticky top-0 left-16 z-50 md:left-40 right-0 h-16 transition-all ease-in-out duration-500 p-1 backdrop-blur-md'>
+      <div className='fixed top-0 left-16 z-50 md:left-40 right-0 h-16 transition-all ease-in-out duration-500 p-1 backdrop-blur-md'>
          <div className='navbar bg-gray-700 shadow shadow-gray-700 px-2 rounded-lg'>
             <div className='w-full flex items-center justify-between gap-2 px-2'>
                <h4 className='text-lg text-gray-300'>Hello Kbin Alam</h4>
@@ -51,4 +51,4 @@ const TopBar = () => {
    );
 };
 
-export default TopBar;
+export default AppHeader;
