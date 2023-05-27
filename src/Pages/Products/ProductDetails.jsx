@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import EditProductModal from '../../components/Modal/EditProductModal';
 import { fetchProductById } from '../../redux/slice/products';
 import Loading from '../Shared/Loading';
 
@@ -9,6 +10,7 @@ export default function ProductDetails() {
    const dispatch = useDispatch();
    const product = useSelector(state => state.products.data);
    const isLoading = useSelector(state => state.products.isLoading);
+   const [isModalOpen, setIsModalOpen] = useState(false);
 
    useEffect(() => {
       dispatch(fetchProductById(id));
@@ -22,8 +24,6 @@ export default function ProductDetails() {
       return <div>Product not found.</div>;
    }
 
-   console.log(product);
-
    const {
       title,
       price,
@@ -32,30 +32,77 @@ export default function ProductDetails() {
       thumbnail,
       description,
       discountPercentage,
-      rating,
-      stock
+      rating
    } = product;
 
-   return (
-      <div className='p-2 mt-2'>
-         <div className='flex flex-col md:flex-row mt-5'>
-            <img
-               className='w-72 lg:max-w-lg rounded'
-               src={thumbnail}
-               alt={title}
-            />
-            <div className='p-2'>
-               <h2 className='text-xl font-semibold'>{title}</h2>
-               <p>Brand: {brand}</p>
+   let discountedPrice = price - price * (discountPercentage / 100);
 
-               <p>Description: {description}</p>
-               <p>Price: ${price}</p>
-               <p>DiscountPercentage: {discountPercentage}</p>
-               <p>Category: {category}</p>
-               <p>Stock: {stock}</p>
-               <p>Rating: {rating}</p>
+   const handleEditProductClick = () => {
+      setIsModalOpen(true);
+   };
+
+   return (
+      <div className='p-4 mt-2'>
+         <div className='flex items-center justify-between my-5'>
+            <h4 className='text-xl font-semibold p-2'>Product Details </h4>
+            <button
+               onClick={handleEditProductClick}
+               className='btn btn-outline btn-md rounded'
+            >
+               Edit Product
+            </button>
+         </div>
+         <div className='w flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'>
+            <img
+               className='h-[500px] overflow-hidden relative'
+               src={thumbnail}
+               alt='Product Image'
+            />
+            <div className='flex flex-col justify-between p-4 leading-normal'>
+               <div className='w-full p-2'>
+                  <h2 className='text-xl lg:text-2xl font-semibold mb-4'>
+                     {title}
+                  </h2>
+                  <p className='text-base font-light text-gray-600'>
+                     {description}
+                  </p>
+                  <div className='flex items-center gap-5 pt-2'>
+                     <p className='border-r-2 border-orange-400 pr-2'>
+                        Rating:{' '}
+                        <span className='text-orange-500'> {rating}</span>
+                     </p>
+                     <p className='border-r-2 border-orange-400 pr-2'>
+                        Brand: <span className='text-orange-500'>{brand}</span>
+                     </p>
+                     <p className=''>
+                        Category:{' '}
+                        <span className='text-orange-500'> {category}</span>
+                     </p>
+                  </div>
+
+                  <div className='mt-5'>
+                     <p className='text-2xl text-gray-400 line-through'>
+                        {' '}
+                        ${price}
+                     </p>
+
+                     <p className='text-3xl text-orange-500 font-semibold'>
+                        ${discountedPrice.toFixed(2)}
+                     </p>
+                     <p className='bg-orange-400 mt-2 w-fit rounded py-0 px-1 text-gray-100'>
+                        {discountPercentage}% OFF
+                     </p>
+                  </div>
+               </div>
             </div>
          </div>
+
+         {isModalOpen && (
+            <EditProductModal
+               setIsModalOpen={setIsModalOpen}
+               product={product}
+            />
+         )}
       </div>
    );
 }

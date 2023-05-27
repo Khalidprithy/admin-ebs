@@ -22,8 +22,8 @@ export default function CustomerCard({ customer }) {
    };
 
    return (
-      <div className='bg-white flex p-4 rounded shadow'>
-         <div className='w-3/12 flex flex-col items-center border-r border-gray-100 pr-2'>
+      <div className='bg-white flex flex-col md:flex-row p-4 rounded shadow'>
+         <div className='w-full md:w-3/12 flex flex-col items-center border-r-0 md:border-r border-gray-100 pr-2'>
             <img
                className='w-24 p-1 shadow rounded-full border border-gray-100'
                src={image}
@@ -37,7 +37,7 @@ export default function CustomerCard({ customer }) {
                <h4>{gender}</h4>
             </div>
          </div>
-         <div className='w-9/12 px-2 relative'>
+         <div className='w-full md:w-9/12 px-2 relative'>
             <div className='flex items-center justify-between border-b border-gray-100 pb-2'>
                <div>
                   <h4 className='text-lg font-semibold'>
