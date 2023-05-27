@@ -2,22 +2,25 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CartItem from '../../components/CartItem';
+import EmptyCart from '../../components/EmptyCart';
 import { fetchCustomerCart } from '../../redux/slice/customers';
 
 export default function CustomerCart() {
    const { id } = useParams();
    const dispatch = useDispatch();
    const customerCart = useSelector(state => state.customers.data);
-
-   console.log(customerCart);
-   const cartInfo = customerCart?.carts[0];
+   const isLoading = useSelector(state => state.customers.isLoading);
+   const cartInfo = customerCart?.carts?.[0];
 
    useEffect(() => {
       dispatch(fetchCustomerCart(id));
    }, [dispatch, id]);
 
-   if (!customerCart) {
-      return <div>Loading customer cart...</div>;
+   if (!cartInfo) {
+      return <EmptyCart customerCart={customerCart} />;
+   }
+   if (isLoading) {
+      return <isLoading />;
    }
 
    // Render the customer cart data

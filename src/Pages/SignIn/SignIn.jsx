@@ -114,7 +114,7 @@ export default function SignIn() {
                               }
                            })}
                         />
-                        <div className='text-2xl absolute top-[52px] right-2 cursor-pointer'>
+                        <div className='text-2xl absolute top-[52px] right-[19px] cursor-pointer'>
                            {passwordShow === false ? (
                               <AiFillEyeInvisible
                                  onClick={() => setPasswordShow(!passwordShow)}

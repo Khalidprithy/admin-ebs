@@ -27,6 +27,8 @@ const productsSlice = createSlice({
     },
     reducers: {},
     extraReducers: (builder) => {
+        // Get All Products
+
         builder
             .addCase(fetchProducts.pending, (state) => {
                 state.isLoading = true;
@@ -41,6 +43,7 @@ const productsSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
             })
+            // Get Single Product
             .addCase(fetchProductById.pending, (state) => {
                 state.isLoading = true;
                 state.isError = false;
@@ -54,6 +57,8 @@ const productsSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
             })
+
+            // Delete a product
             .addCase(deleteProduct.pending, (state) => {
                 state.isLoading = true;
                 state.isError = false;

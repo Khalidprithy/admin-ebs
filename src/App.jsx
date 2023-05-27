@@ -9,7 +9,7 @@ function App() {
 
    return (
       <>
-         <div className='flex'>
+         <div className='flex bg-blue-100'>
             {!isLoginPage ? <Sidebar /> : null}
             <div className='flex flex-col flex-1 ml-16 md:ml-40 transition-all ease-in-out duration-500 bg-blue-50'>
                {!isLoginPage ? <TopBar /> : null}

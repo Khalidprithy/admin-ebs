@@ -18,6 +18,7 @@ const customersSlice = createSlice({
         isError: false
     },
     extraReducers: (builder) => {
+        // Get Customers
         builder
             .addCase(fetchCustomers.pending, (state) => {
                 state.isLoading = true;
@@ -30,6 +31,7 @@ const customersSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
             })
+            // Get Customer Cart
             .addCase(fetchCustomerCart.pending, (state) => {
                 state.isLoading = true;
             })
