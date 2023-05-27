@@ -40,6 +40,19 @@ export const addProduct = createAsyncThunk(
     }
 );
 
+export const updateProduct = createAsyncThunk(
+    'products/updateProduct',
+    async ({ productId, updatedProductData }) => {
+        const response = await fetch(`https://dummyjson.com/products/${productId}`, {
+            method: 'PUT',
+            body: JSON.stringify(updatedProductData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return response.json();
+    }
+);
 const productsSlice = createSlice({
     name: "products",
     initialState: {
@@ -49,7 +62,7 @@ const productsSlice = createSlice({
     },
     reducers: {},
     extraReducers: (builder) => {
-        // Get All Products
+        // Fetch All Products
         builder
             .addCase(fetchProducts.pending, (state) => {
                 state.isLoading = true;
@@ -63,8 +76,10 @@ const productsSlice = createSlice({
             .addCase(fetchProducts.rejected, (state) => {
                 state.isLoading = false;
                 state.isError = true;
-            })
-            // Get Single Product
+            });
+
+        // Fetch Single Product
+        builder
             .addCase(fetchProductById.pending, (state) => {
                 state.isLoading = true;
                 state.isError = false;
@@ -77,9 +92,10 @@ const productsSlice = createSlice({
             .addCase(fetchProductById.rejected, (state) => {
                 state.isLoading = false;
                 state.isError = true;
-            })
+            });
 
-            // Delete a product
+        // Delete a Product
+        builder
             .addCase(deleteProduct.pending, (state) => {
                 state.isLoading = true;
                 state.isError = false;
@@ -95,25 +111,46 @@ const productsSlice = createSlice({
             .addCase(deleteProduct.rejected, (state) => {
                 state.isLoading = false;
                 state.isError = true;
-            })
+            });
 
-            // Add a product
+        // Add a Product
+        builder
             .addCase(addProduct.pending, (state) => {
                 state.isLoading = true;
                 state.isError = false;
             })
             .addCase(addProduct.fulfilled, (state) => {
                 state.isLoading = false;
-                // state.data = action.payload;
                 state.isError = false;
 
-                console.log("Product Added")
+                console.log("Product Added");
             })
             .addCase(addProduct.rejected, (state) => {
                 state.isLoading = false;
                 state.isError = true;
             });
 
+        // Update a Product
+        builder
+            .addCase(updateProduct.pending, (state) => {
+                state.isLoading = true;
+                state.isError = false;
+            })
+            .addCase(updateProduct.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+
+                const updatedProduct = action.payload;
+                state.data.products = state.data.products?.map(product =>
+                    product.id === updatedProduct.id ? updatedProduct : product
+                );
+
+                console.log("Product Updated");
+            })
+            .addCase(updateProduct.rejected, (state) => {
+                state.isLoading = false;
+                state.isError = true;
+            });
     }
 });
 

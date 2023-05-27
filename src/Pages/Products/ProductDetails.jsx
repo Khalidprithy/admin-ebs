@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import EditProductModal from '../../components/Modal/EditProductModal';
@@ -10,8 +10,6 @@ export default function ProductDetails() {
    const dispatch = useDispatch();
    const product = useSelector(state => state.products.data);
    const isLoading = useSelector(state => state.products.isLoading);
-   const [isModalOpen, setIsModalOpen] = useState(false);
-
    useEffect(() => {
       dispatch(fetchProductById(id));
    }, [dispatch, id]);
@@ -37,20 +35,16 @@ export default function ProductDetails() {
 
    let discountedPrice = price - price * (discountPercentage / 100);
 
-   const handleEditProductClick = () => {
-      setIsModalOpen(true);
-   };
-
    return (
       <div className='p-4 mt-2'>
          <div className='flex items-center justify-between my-5'>
             <h4 className='text-xl font-semibold p-2'>Product Details </h4>
-            <button
-               onClick={handleEditProductClick}
+            <label
+               htmlFor='productModalEdit'
                className='btn btn-outline btn-md rounded'
             >
                Edit Product
-            </button>
+            </label>
          </div>
          <div className='w flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'>
             <img
@@ -97,12 +91,7 @@ export default function ProductDetails() {
             </div>
          </div>
 
-         {isModalOpen && (
-            <EditProductModal
-               setIsModalOpen={setIsModalOpen}
-               product={product}
-            />
-         )}
+         <EditProductModal product={product} />
       </div>
    );
 }

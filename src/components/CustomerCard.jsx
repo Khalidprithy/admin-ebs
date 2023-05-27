@@ -38,18 +38,20 @@ export default function CustomerCard({ customer }) {
             </div>
          </div>
          <div className='w-full md:w-9/12 px-2 relative'>
-            <div className='flex items-center justify-between border-b border-gray-100 pb-2'>
+            <div className='flex flex-col md:flex-row items-center justify-between border-b border-gray-100 pb-2'>
                <div>
-                  <h4 className='text-lg font-semibold'>
+                  <h4 className='text-base md:text-lg font-semibold'>
                      {firstName} {lastName}
                   </h4>
                   <span className='text-sm text-gray-600'>{company?.name}</span>
                </div>
                <div>
-                  <h4 className='text-base font-medium text-gray-600'>
+                  <h4 className='text-sm md:text-base font-medium text-gray-600'>
                      {email}
                   </h4>
-                  <h4 className='text-end text-sm text-gray-600'>{phone}</h4>
+                  <h4 className='text-center md:text-end text-sm text-gray-600'>
+                     {phone}
+                  </h4>
                </div>
             </div>
             <div className='mb-10'>

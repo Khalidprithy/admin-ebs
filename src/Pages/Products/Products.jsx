@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AddProductModal from '../../components/Modal/AddProductModal';
 import ProductCard from '../../components/ProductCard';
@@ -13,15 +13,9 @@ export default function Products() {
    console.log(updatedData);
    const products = updatedData?.products;
 
-   const [isModalOpen, setIsModalOpen] = useState(false);
-
    useEffect(() => {
       dispatch(fetchProducts());
    }, [dispatch]);
-
-   const handleAddProductClick = () => {
-      setIsModalOpen(true);
-   };
 
    if (state.products.isLoading) {
       return <Loading />;
@@ -42,12 +36,12 @@ export default function Products() {
       <div className='p-2'>
          <div className='flex items-center justify-between px-4 pb-3 border-b border-gray-200 mx-2 pt-10'>
             <h4 className='text-2xl font-semibold'>Products</h4>
-            <button
-               onClick={handleAddProductClick}
+            <label
+               htmlFor='productModalAdd'
                className='btn btn-outline rounded'
             >
                Add Product
-            </button>
+            </label>
          </div>
          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2'>
             {products?.map(product => (
@@ -55,12 +49,7 @@ export default function Products() {
             ))}
          </div>
 
-         {isModalOpen && (
-            <AddProductModal
-               setIsModalOpen={setIsModalOpen}
-               addProduct={handleAddProduct}
-            />
-         )}
+         <AddProductModal addProduct={handleAddProduct} />
       </div>
    );
 }

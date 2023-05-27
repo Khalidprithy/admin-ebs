@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
-import { AiFillCloseCircle } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import Loading from '../../Pages/Shared/Loading';
 
-export default function AddProductModal({ setIsModalOpen, addProduct }) {
+export default function AddProductModal({ addProduct }) {
    const isLoading = useSelector(state => state.products.isLoading);
    const {
       register,
@@ -28,22 +27,22 @@ export default function AddProductModal({ setIsModalOpen, addProduct }) {
 
       addProduct(productData);
       reset();
-      setIsModalOpen(false);
    };
 
    return (
-      <div className='fixed inset-0 flex items-center justify-center z-50 backdrop-blur'>
-         <div className='relative bg-gray-100 dark:bg-gray-800 rounded p-8 shadow-md border border-gray-200'>
-            <div>
+      <>
+         <input type='checkbox' id='productModalAdd' className='modal-toggle' />
+         <div className='modal'>
+            <div className='modal-box relative'>
+               <label
+                  htmlFor='productModalAdd'
+                  className='btn btn-sm btn-circle absolute right-2 top-2'
+               >
+                  ✕
+               </label>
                <h4 className='text-lg font-semibold text-center pb-5'>
                   Add a new product
                </h4>
-               <button
-                  className='absolute top-1 right-1'
-                  onClick={() => setIsModalOpen(false)}
-               >
-                  <AiFillCloseCircle className='text-2xl hover:text-orange-500 ' />
-               </button>
                {isLoading ? (
                   <Loading />
                ) : (
@@ -226,7 +225,7 @@ export default function AddProductModal({ setIsModalOpen, addProduct }) {
                )}
             </div>
          </div>
-      </div>
+      </>
    );
 }
 
