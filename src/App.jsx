@@ -60,7 +60,7 @@ function App() {
             )}
             <div
                onClick={() => setIsSidebarOpen(false)}
-               className={`flex-1 bg-blue-50 ${
+               className={`flex-1 bg-blue-50 ml-0 md:ml-40 ${
                   isLoginPage ? 'mt-20' : 'mt-10'
                }`}
             >
