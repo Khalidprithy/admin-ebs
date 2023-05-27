@@ -5,7 +5,7 @@ import SellsInfoCard from '../../components/SellsInfoCard';
 
 export default function SellsInfo() {
    return (
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 mt-14'>
          <SellsInfoCard
             name={'Total sales'}
             value={550}

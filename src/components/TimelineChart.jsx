@@ -160,7 +160,9 @@ export default function TimelineChart() {
    });
 
    return (
-      <div className='w-[400px] sm:w-[500px] h-[400px] lg:w-8/12 mt-6 m-2 bg-white pr-4 rounded-lg p-2 shadow mx-auto'>
+      <div
+         className={`w-full sm:w-[400px] lg:w-8/12 h-[400px] mx-auto mt-6 m-2 bg-white pr-4 rounded-lg p-2 shadow`}
+      >
          <h4 className='text-base font-semibold m-2'>Product Timeline</h4>
 
          <ReactApexChart

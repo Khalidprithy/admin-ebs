@@ -9,7 +9,6 @@ export default function PolarChart() {
       series: [33, 17, 23, 15, 12],
       options: {
          chart: {
-            width: 370,
             type: 'polarArea'
          },
          labels: ['Women', 'Man', 'Kids', 'Tech', 'Decor'],
@@ -25,7 +24,7 @@ export default function PolarChart() {
             show: false
          },
          legend: {
-            position: 'bottom'
+            position: isMobile ? 'bottom' : 'right'
          },
          plotOptions: {
             polarArea: {
@@ -50,7 +49,9 @@ export default function PolarChart() {
    const chartWidth = isMobile ? '100%' : '80%';
 
    return (
-      <div className='w-[400px] sm:w-[500px] h-[400px] lg:w-4/12 mt-6 m-2 bg-white pr-4 rounded-lg p-2 shadow mx-auto'>
+      <div
+         className={`w-full sm:w-[400px] lg:w-4/12 h-[400px] mx-auto mt-6 m-2 bg-white pr-4 rounded-lg p-2 shadow`}
+      >
          <h4 className='text-base font-semibold m-2'>Sells Ratios</h4>
 
          <ReactApexChart

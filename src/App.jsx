@@ -57,7 +57,7 @@ function App() {
                </>
             )}
             <div
-               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+               onClick={() => setIsSidebarOpen(false)}
                className={`flex-1 bg-blue-50 ${
                   isLoginPage ? 'mt-20' : 'mt-10'
                }`}
