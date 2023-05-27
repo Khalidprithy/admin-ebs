@@ -9,8 +9,8 @@ export default function CustomerCart() {
    const dispatch = useDispatch();
    const customerCart = useSelector(state => state.customers.data);
 
+   console.log(customerCart);
    const cartInfo = customerCart?.carts[0];
-   console.log(cartInfo);
 
    useEffect(() => {
       dispatch(fetchCustomerCart(id));

@@ -26,21 +26,32 @@ export const login = createAsyncThunk(
     }
 );
 
+const loadTokenFromCookies = () => {
+    const token = Cookies.get('token');
+    if (token) {
+        return token;
+    }
+    return null;
+};
+
 const authenticationSlice = createSlice({
     name: "authentication",
     initialState: {
         isLoading: false,
         isAuthenticated: false,
         user: null,
+        token: loadTokenFromCookies(),
         error: null
     },
     reducers: {
         setUser: (state, action) => {
             state.user = action.payload;
             state.isAuthenticated = true;
+            state.token = action.payload.token;
         },
-        clearUser: (state) => {
+        logOut: (state) => {
             state.user = null;
+            state.token = null;
             state.isAuthenticated = false;
         }
     },
@@ -55,6 +66,7 @@ const authenticationSlice = createSlice({
                 state.isLoading = false;
                 state.isAuthenticated = true;
                 state.user = action.payload;
+                state.token = action.payload.token;
                 state.error = null;
                 // Store user in local storage
                 localStorage.setItem("user", JSON.stringify(action.payload));
@@ -67,5 +79,8 @@ const authenticationSlice = createSlice({
     }
 });
 
-export const { setUser, clearUser } = authenticationSlice.actions;
+export const { setUser, logOut } = authenticationSlice.actions;
 export default authenticationSlice.reducer;
+
+export const selectCurrentUser = (state) => state.authentication.user
+export const selectCurrentToken = (state) => state.authentication.token
