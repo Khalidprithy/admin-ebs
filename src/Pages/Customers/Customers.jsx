@@ -20,7 +20,7 @@ export default function Customers() {
    }
 
    return (
-      <div className='bg-blue-50'>
+      <div className='bg-blue-50 mt-4'>
          <div className='px-4 pb-3 border-b border-gray-200 mx-2'>
             <h4 className='text-2xl font-semibold pt-10'>Our Customers</h4>
          </div>

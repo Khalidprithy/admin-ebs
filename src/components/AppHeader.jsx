@@ -41,9 +41,6 @@ const AppHeader = () => {
                         </Link>
                      </li>
                      <li>
-                        <a>Settings</a>
-                     </li>
-                     <li>
                         <a onClick={handleLogout}>Logout</a>
                      </li>
                   </ul>

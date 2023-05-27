@@ -36,8 +36,8 @@ export default function ProductDetails() {
    let discountedPrice = price - price * (discountPercentage / 100);
 
    return (
-      <div className='p-4 mt-2'>
-         <div className='flex items-center justify-between my-5'>
+      <div className='p-4 min-h-full'>
+         <div className='flex items-center justify-between mt-10 my-5'>
             <h4 className='text-xl font-semibold p-2'>Product Details </h4>
             <label
                htmlFor='productModalEdit'

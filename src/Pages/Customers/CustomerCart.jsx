@@ -25,7 +25,7 @@ export default function CustomerCart() {
 
    // Render the customer cart data
    return (
-      <div className='mt-10 p-2'>
+      <div className='mt-10 p-2 min-h-full'>
          <h2 className='text-lg md:text-xl font-semibold border-b border-gray-200 pb-2'>
             Customer&apos;s Cart
          </h2>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { FcShop } from 'react-icons/fc';
 import { useLocation } from 'react-router-dom';
-import Router from './Router/Router';
+import Footer from './Pages/Shared/Footer';
+import Router from './Routers/Router';
 import TopBar from './components/AppHeader';
 import Sidebar from './components/Sidebar';
 
@@ -32,12 +33,13 @@ function App() {
 
    return (
       <div className={`flex ${isMobile ? 'flex-col' : 'bg-blue-100'}`}>
-         <TopBar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+         {isLoginPage || <TopBar />}
+
          <div
             className={`flex flex-col flex-1 ml-${
                isMobile ? '0' : '16'
             } md:ml-${
-               isMobile ? '0' : '40'
+               !isMobile ? '0' : '40'
             } transition-all ease-in-out duration-500 bg-blue-50`}
          >
             {!isLoginPage && (
@@ -63,6 +65,7 @@ function App() {
                }`}
             >
                <Router />
+               <Footer />
             </div>
          </div>
       </div>

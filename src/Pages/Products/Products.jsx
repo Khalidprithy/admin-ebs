@@ -33,8 +33,8 @@ export default function Products() {
    };
 
    return (
-      <div className='p-2'>
-         <div className='flex items-center justify-between px-4 pb-3 border-b border-gray-200 mx-2 pt-10'>
+      <div className='p-2 mt-4'>
+         <div className='flex items-center justify-between px-4 pb-3 border-b border-gray-200 mx-2 pt-8'>
             <h4 className='text-2xl font-semibold'>Products</h4>
             <label
                htmlFor='productModalAdd'
