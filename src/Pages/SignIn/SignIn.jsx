@@ -46,12 +46,11 @@ export default function SignIn() {
                   </h4>
                   <img src={SignGrapich} alt='' />
                </div>
-               <div className='w-[350px] md:w-[400px] lg:w-[500px] bg-primary p-4 py-10 rounded-md'>
-                  <h4 className='text-4xl font-semibold text-center text-gray-100 py-4'>
+               <div className='w-[350px] md:w-[400px] lg:w-[500px] bg-primary p-4 py-5 md:py-10  rounded-md overflow-auto'>
+                  <h4 className='text-2xl md:text-4xl font-semibold text-center text-gray-100 py-2 md:py-4'>
                      Sign In
                   </h4>
-                  <p></p>
-                  <button className='px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-gray-100 hover:border-slate-400 hover:text-green-500 hover:bg-gray-700 hover:shadow transition duration-150 mx-auto'>
+                  {/* <button className='px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-gray-100 hover:border-slate-400 hover:text-green-500 hover:bg-gray-700 hover:shadow transition duration-150 mx-auto'>
                      <img
                         className='w-6 h-6'
                         src='https://www.svgrepo.com/show/475656/google-color.svg'
@@ -60,7 +59,7 @@ export default function SignIn() {
                      />
                      <span>Login with Google</span>
                   </button>
-                  <div className='divider text-gray-300'>OR</div>
+                  <div className='divider text-gray-300'>OR</div> */}
                   <form onSubmit={handleSubmit(SignUp)}>
                      <div className='form-control w-full relative'>
                         <label
