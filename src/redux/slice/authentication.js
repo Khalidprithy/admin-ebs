@@ -53,6 +53,8 @@ const authenticationSlice = createSlice({
             state.user = null;
             state.token = null;
             state.isAuthenticated = false;
+            state.token = null;
+            Cookies.remove("token");
         }
     },
     extraReducers: (builder) => {
