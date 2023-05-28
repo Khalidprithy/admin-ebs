@@ -48,7 +48,7 @@ export default function ProductDetails() {
          </div>
          <div className='w flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'>
             <img
-               className='h-[500px] overflow-hidden relative'
+               className='h-[500px] overflow-hidden relative rounded-l-md'
                src={thumbnail}
                alt='Product Image'
             />

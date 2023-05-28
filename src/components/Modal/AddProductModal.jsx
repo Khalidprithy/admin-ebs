@@ -32,8 +32,8 @@ export default function AddProductModal({ addProduct }) {
    return (
       <>
          <input type='checkbox' id='productModalAdd' className='modal-toggle' />
-         <div className='modal'>
-            <div className='modal-box relative'>
+         <div className='modal backdrop-blur'>
+            <div className='modal-box relative rounded'>
                <label
                   htmlFor='productModalAdd'
                   className='btn btn-sm btn-circle absolute right-2 top-2'
@@ -216,7 +216,7 @@ export default function AddProductModal({ addProduct }) {
                         ></textarea>
                      </div>
                      <button
-                        className='btn btn-outline btn-md mt-4 w-full mx-auto rounded'
+                        className=' btn btn-outline btn-md mt-4 mx-auto rounded'
                         type='submit'
                      >
                         Add Product

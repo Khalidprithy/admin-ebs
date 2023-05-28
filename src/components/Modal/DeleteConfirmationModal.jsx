@@ -25,13 +25,13 @@ export default function DeleteConfirmationModal({
             </p>
             <div className='flex justify-end'>
                <button
-                  className='text-base text-gray-500 font-bold hover:text-gray-700 mr-4'
+                  className='btn btn-outline btn-sm rounded mr-4'
                   onClick={onClose}
                >
                   Cancel
                </button>
                <button
-                  className='text-base text-red-500 font-bold hover:text-red-700'
+                  className='btn btn-error btn-sm rounded text-white'
                   onClick={handleDelete}
                >
                   Delete

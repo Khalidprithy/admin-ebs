@@ -31,7 +31,7 @@ export default function ProductCard({ product }) {
    };
 
    return (
-      <div className='bg-white p-2 rounded flex items-center justify-between'>
+      <div className='bg-white p-2 rounded flex items-center justify-between shadow hover:shadow-lg hover:translate-x-1 transition-all ease-in duration-100'>
          <div className='flex items-center gap-2'>
             <img className='w-20 max-h-16 rounded-md' src={thumbnail} alt='' />
             <div>

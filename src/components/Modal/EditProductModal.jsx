@@ -27,11 +27,11 @@ export default function EditProductModal({ product }) {
             id='productModalEdit'
             className='modal-toggle'
          />
-         <div className='modal'>
-            <div className='modal-box relative'>
+         <div className='modal backdrop-blur'>
+            <div className='modal-box relative rounded'>
                <label
                   htmlFor='productModalEdit'
-                  className='btn btn-sm btn-circle absolute right-2 top-2'
+                  className='btn btn-sm btn-circle hover:bg-orange-600 border-0 absolute right-2 top-2'
                >
                   ✕
                </label>
@@ -180,7 +180,7 @@ export default function EditProductModal({ product }) {
                      </button>
                      <button
                         onClick={handleSave}
-                        className='btn btn-success btn-sm rounded'
+                        className='btn btn-primary btn-sm text-white rounded'
                      >
                         Save
                      </button>
