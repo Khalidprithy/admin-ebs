@@ -13,13 +13,13 @@ export default {
 
           "secondary": "#354e55",
 
-          "accent": "#f92585",
+          "accent": "#34495E",
 
           "neutral": "#252837",
 
           "base-100": "#ECF0F3",
 
-          "info": "#B1C3E7",
+          "info": "#138D75",
 
           "success": "#16a34a",
 

@@ -1,10 +1,15 @@
+import { useSelector } from 'react-redux';
 import introImg from '../assets/introGrapichs.png';
 
 export default function HeroCard() {
+   const user = useSelector(state => state.authentication.user);
+
    return (
       <div className='relative w-full lg:w-7/12 grid grid-cols-1 sm:grid-cols-2  bg-gray-50 rounded shadow p-5 mt-4'>
          <div>
-            <h4 className='text-3xl font-semibold my-4'>Kbin Alam</h4>
+            <h4 className='text-3xl font-semibold my-4'>
+               {user?.firstName} {user?.lastName}
+            </h4>
             <p className=' text-gray-700 mb-14'>
                Efficiently manage your online business with our intuitive
                interface and powerful tools. Track sales, monitor inventory,

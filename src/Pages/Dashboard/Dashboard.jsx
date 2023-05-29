@@ -1,5 +1,6 @@
 import DashboardCharts from './DashboardCharts';
 import DashboardIntro from './DashboardIntro';
+import OrderSummary from './OrderSummary';
 import SellsInfo from './SellsInfo';
 
 export default function Dashboard() {
@@ -8,6 +9,7 @@ export default function Dashboard() {
          <SellsInfo />
          <DashboardIntro />
          <DashboardCharts />
+         <OrderSummary />
       </div>
    );
 }

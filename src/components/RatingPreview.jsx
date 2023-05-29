@@ -24,7 +24,7 @@ export default function RatingPreview() {
          <div className='pt-5 mb-14'>
             <ProgressBar
                name={'Excellent'}
-               progress={85}
+               progress={95}
                reviews={42}
                color={'gray'}
             />
@@ -48,7 +48,7 @@ export default function RatingPreview() {
             />
             <ProgressBar
                name={'Poor'}
-               progress={25}
+               progress={15}
                reviews={13}
                color={'gray'}
             />
