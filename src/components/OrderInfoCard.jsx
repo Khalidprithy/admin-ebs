@@ -6,7 +6,7 @@ export default function OrderInfoCard(props) {
    const { name, value, icon } = props;
 
    return (
-      <div className='flex items-center justify-between bg-info py-3 px-4 m-1 rounded-md  text-gray-50 '>
+      <div className='flex items-center justify-between bg-primary py-3 px-4 m-1 rounded-md text-gray-50 '>
          <div className='flex items-center justify-start gap-2'>
             {React.createElement(icon, {
                className: `text-4xl`

@@ -1,4 +1,5 @@
-import { BsCurrencyDollar } from 'react-icons/bs';
+import { BsClipboard2CheckFill, BsFillCartCheckFill } from 'react-icons/bs';
+import { MdPending } from 'react-icons/md';
 import OrderInfoCard from '../../components/OrderInfoCard';
 export default function OrderSummary() {
    return (
@@ -6,17 +7,13 @@ export default function OrderSummary() {
          <OrderInfoCard
             name={'New Orders'}
             value={327}
-            icon={BsCurrencyDollar}
+            icon={BsFillCartCheckFill}
          />
-         <OrderInfoCard
-            name={'Order Pending'}
-            value={174}
-            icon={BsCurrencyDollar}
-         />
+         <OrderInfoCard name={'Order Pending'} value={174} icon={MdPending} />
          <OrderInfoCard
             name={'Completed Order'}
             value={680}
-            icon={BsCurrencyDollar}
+            icon={BsClipboard2CheckFill}
          />
       </div>
    );
